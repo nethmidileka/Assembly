@@ -22,9 +22,9 @@
  syscall
  move $t1,$v0
  
-#print output text
+#print output1 text
  li $v0,4
- la $a0,output
+ la $a0,output1
  syscall
  
 #add two num and print it
@@ -32,7 +32,27 @@
  
  move $a0,$t2
  li $v0,1
- syscall 
+ syscall
+ 
+#print new line
+ li $v0,4
+ la $a0,newline
+ syscall  
+ 
+ 
+#print output2 text
+ li $v0,4
+ la $a0,output2
+ syscall
+ 
+#get substarct and print
+ sub $t3,$t0,$t1
+ 
+ move $a0,$t3
+ li $v0,1
+ syscall
+   
+ 
  
 #exit program
  li $v0,10
@@ -40,10 +60,10 @@
  
   
   
-   
- 
- 
+  
 .data
  prompt1: .asciiz "Enter Your 1st number: "
  prompt2: .asciiz "Enter Your 2nd number: "
- output: .asciiz "you entered sum of numbers:" 
+ output1: .asciiz "you entered sum of numbers:" 
+ output2: .asciiz "you entered sunstarct of numbers:" 
+ newline: .asciiz "\n"
